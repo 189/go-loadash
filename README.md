@@ -1,9 +1,9 @@
-# go-loadash
+# go-lodash
 
 A set of loadash-like utilities in Golang.
 
-#Installation
+# Installation
 
 ```
-$ go get github.com/189/goloadash
+$ go get github.com/189/golodash
 ```
