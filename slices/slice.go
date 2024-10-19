@@ -18,15 +18,44 @@ func Map[T any, U any](items []T, mapper func(T) U) []U {
 	return result
 }
 
-type FilterFunc[T any] func(T) bool
+type Predicate[T comparable] func(T) bool
 
 // Filter the slice object
-func Filter[T any](items []T, fn FilterFunc[T]) []T {
-	var result []T
+func Filter[T ~[]E, E comparable](items T, fn Predicate[E]) T {
+	var result T
 	for _, item := range items {
 		if fn(item) {
 			result = append(result, item)
 		}
 	}
 	return result
+}
+
+// Return true if any Predicate(item) == true
+func Some[T ~[]E, E comparable](items T, fn Predicate[E]) bool {
+	for _, item := range items {
+		if fn(item) {
+			return true
+		}
+	}
+	return false
+}
+
+// Return true only if all Predicate(item) == true
+func Every[T ~[]E, E comparable](items T, fn Predicate[E]) bool {
+	for _, item := range items {
+		if !fn(item) {
+			return false
+		}
+	}
+	return true
+}
+
+// Another forms for for loop instead of for .. range, loop will stop when callback with False result
+func ForEach[T ~[]E, E any](items T, callback func(idx int, item E) bool) {
+	for idx, m := range items {
+		if !callback(idx, m) {
+			break
+		}
+	}
 }
