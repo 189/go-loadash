@@ -1,6 +1,6 @@
 # go-lodash
 
-A set of loadash-like utilities in Golang.
+A set of lodash-like utilities in Golang.
 
 # Installation
 
