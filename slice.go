@@ -59,3 +59,18 @@ func ForEach[T ~[]E, E any](items T, callback func(idx int, item E) bool) {
 		}
 	}
 }
+
+// Flat returns an array with a single level deep.
+func Flat[T ~[]E, E any](items []T) []E {
+	totalLen := 0
+	for i := range items {
+		totalLen += len(items[i])
+	}
+
+	result := make(T, 0, totalLen)
+	for m := range items {
+		result = append(result, items[m]...)
+	}
+
+	return result
+}
