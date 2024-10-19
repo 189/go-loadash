@@ -1,4 +1,4 @@
-package golodash
+package slices
 
 // Iterate over each item in the slice sequentially, passing the result of the previous iteration to the next iteration's function execution
 func Reduce[T any, U any](items []T, initial U, reducer func(U, T) U) U {

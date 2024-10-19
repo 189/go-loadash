@@ -1,4 +1,4 @@
-package golodash
+package object
 
 // Retrive all the keys from a map
 func GetKeys[K comparable, V any](obj map[K]V) []K {
