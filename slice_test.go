@@ -1,4 +1,4 @@
-package slices
+package golodash
 
 import (
 	"slices"
