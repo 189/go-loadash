@@ -17,3 +17,9 @@ func GetValues[K comparable, V any](obj map[K]V) []V {
 	}
 	return ret
 }
+
+// Get an empty value
+func GetZeroValue[T any]() T {
+	var zero T
+	return zero
+}

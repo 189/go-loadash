@@ -2,6 +2,7 @@ package golodash
 
 import (
 	"sort"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -16,7 +17,7 @@ func TestGetKeys(t *testing.T) {
 
 	rst := GetKeys(data)
 	sort.Slice(rst, func(i, j int) bool {
-		return rst[i] > rst[j]
+		return strings.Compare(rst[i], rst[j]) > 0
 	})
 	expected := []string{"Name", "Country"}
 
@@ -35,7 +36,7 @@ func TestGetValues(t *testing.T) {
 	rst := GetValues(data)
 	expected := []string{"Tom", "Boy"}
 	sort.Slice(rst, func(i, j int) bool {
-		return rst[i] > rst[j]
+		return strings.Compare(rst[i], rst[j]) > 0
 	})
 
 	if !is.Equal(rst, expected) {
