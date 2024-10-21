@@ -63,7 +63,7 @@ func Capitalize(str string) string {
 	return cases.Title(language.English).String(str)
 }
 
-// PascalCase converts string to pascal case.
+// PascalCase converts string to pascal case. eg."hello world" will be "HelloWorld"
 func PascalCase(str string) string {
 	items := Words(str)
 	for i := range items {
@@ -72,7 +72,7 @@ func PascalCase(str string) string {
 	return strings.Join(items, "")
 }
 
-// CamelCase converts string to camel case.
+// CamelCase converts string to camel case. eg."hello world" will be "helloWorld"
 func CamelCase(str string) string {
 	items := Words(str)
 	for i, item := range items {
@@ -85,7 +85,7 @@ func CamelCase(str string) string {
 	return strings.Join(items, "")
 }
 
-// KebabCase converts string to kebab case.
+// KebabCase converts string to kebab case. eg. "hello world" will be "hello-world"
 func KebabCase(str string) string {
 	items := Words(str)
 	for i := range items {

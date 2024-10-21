@@ -23,3 +23,34 @@ func TestCapitalize(t *testing.T) {
 
 	is.Equal(expect, ret)
 }
+
+// PascalCase converts string to pascal case.
+func TestPascalCase(t *testing.T) {
+	is := assert.New(t)
+
+	ret := PascalCase("hello world")
+	expect := "HelloWorld"
+
+	is.Equal(expect, ret)
+
+}
+
+// CamelCase converts string to camel case.
+func TestCamelCase(t *testing.T) {
+	is := assert.New(t)
+
+	ret := CamelCase("hello world")
+	expect := "helloWorld"
+
+	is.Equal(expect, ret)
+}
+
+// KebabCase converts string to kebab case.
+func TestKebabCase(t *testing.T) {
+	is := assert.New(t)
+
+	ret := KebabCase("hello world")
+	expect := "hello-world"
+
+	is.Equal(expect, ret)
+}

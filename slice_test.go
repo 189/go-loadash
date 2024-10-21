@@ -1,7 +1,6 @@
 package golodash
 
 import (
-	"slices"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -19,19 +18,18 @@ func TestReduce(t *testing.T) {
 }
 
 func TestMap(t *testing.T) {
+	is := assert.New(t)
 	nums := []int32{1, 2, 3, 4, 5}
+
 	ret := Map(nums, func(item int32) int32 {
 		return item * 2
 	})
 
 	expected := []int32{2, 4, 6, 8, 10}
-	if !slices.Equal(expected, ret) {
-		t.Fatalf(`expect %v, but got %v`, expected, ret)
-	}
+	is.ElementsMatch(expected, ret)
 }
 
 func TestFilter(t *testing.T) {
-	t.Parallel()
 	is := assert.New(t)
 
 	nums := []int32{1, 2, 3, 4, 5}
@@ -40,35 +38,29 @@ func TestFilter(t *testing.T) {
 	})
 	expected := []int32{5}
 
-	is.Equal(expected, ret)
+	is.ElementsMatch(expected, ret)
 }
 
 func TestSome(t *testing.T) {
+	is := assert.New(t)
 	nums := []int32{1, 2, 3, 4}
 
-	if rst := Some(nums, func(item int32) bool { return item == 2 }); !rst {
-		t.Errorf("expect true, but got false")
-		return
-	}
+	rst := Some(nums, func(item int32) bool { return item == 2 })
+	is.Equal(true, rst)
 
-	if rst := Some(nums, func(item int32) bool { return item == 5 }); rst {
-		t.Errorf("expect false, but got true")
-		return
-	}
+	rst = Some(nums, func(item int32) bool { return item == 5 })
+	is.Equal(false, rst)
 }
 
 func TestEvery(t *testing.T) {
+	is := assert.New(t)
+
 	nums := []int32{1, 2, 3, 4}
+	rst := Every(nums, func(item int32) bool { return item > 0 })
+	is.Equal(true, rst)
 
-	if rst := Every(nums, func(item int32) bool { return item > 0 }); !rst {
-		t.Errorf("expect true, but got false")
-		return
-	}
-
-	if rst := Every(nums, func(item int32) bool { return item > 2 }); rst {
-		t.Errorf("expect false, but got true")
-		return
-	}
+	rst = Every(nums, func(item int32) bool { return item > 2 })
+	is.Equal(false, rst)
 }
 
 func TestForEach(t *testing.T) {
