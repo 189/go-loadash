@@ -107,3 +107,13 @@ func Ellipsis(str string, length int) string {
 
 	return str
 }
+
+// IsAlpha check if the string contains only letters (a-zA-Z). Empty string is valid.
+func IsAlpha(s string) bool {
+	for _, letter := range s {
+		if !unicode.IsLetter(letter) {
+			return false
+		}
+	}
+	return true
+}

@@ -24,7 +24,6 @@ func TestCapitalize(t *testing.T) {
 	is.Equal(expect, ret)
 }
 
-// PascalCase converts string to pascal case.
 func TestPascalCase(t *testing.T) {
 	is := assert.New(t)
 
@@ -35,7 +34,6 @@ func TestPascalCase(t *testing.T) {
 
 }
 
-// CamelCase converts string to camel case.
 func TestCamelCase(t *testing.T) {
 	is := assert.New(t)
 
@@ -45,7 +43,6 @@ func TestCamelCase(t *testing.T) {
 	is.Equal(expect, ret)
 }
 
-// KebabCase converts string to kebab case.
 func TestKebabCase(t *testing.T) {
 	is := assert.New(t)
 
@@ -53,4 +50,14 @@ func TestKebabCase(t *testing.T) {
 	expect := "hello-world"
 
 	is.Equal(expect, ret)
+}
+
+func TestIsAlpha(t *testing.T) {
+	is := assert.New(t)
+
+	rst := IsAlpha("13131")
+	is.Equal(false, rst)
+
+	rst = IsAlpha("abcdef")
+	is.Equal(true, rst)
 }
