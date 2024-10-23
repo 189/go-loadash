@@ -126,3 +126,9 @@ func Splice[T ~[]E, E any](s *T, start int, removes int, items ...E) error {
 
 	return nil
 }
+
+// Splice add the slice to the front of slice
+func Unshift[T ~[]E, E any](s *T, items ...E) T {
+	*s = append(items, (*s)...)
+	return *s
+}

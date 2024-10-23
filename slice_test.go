@@ -176,3 +176,19 @@ func TestSplice(t *testing.T) {
 	}
 	is.Equal(expected, items)
 }
+
+func TestUnshift(t *testing.T) {
+	t.Parallel()
+
+	is := assert.New(t)
+	items := []int{
+		1, 2, 7, 8, 5,
+	}
+
+	Unshift(&items, 0)
+
+	expected := []int{
+		0, 1, 2, 7, 8, 5,
+	}
+	is.Equal(expected, items)
+}
