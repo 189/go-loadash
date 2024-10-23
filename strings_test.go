@@ -7,6 +7,7 @@ import (
 )
 
 func TestSubstring(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 
 	ret := Substring("hello world", 3, 3)
@@ -16,6 +17,7 @@ func TestSubstring(t *testing.T) {
 }
 
 func TestCapitalize(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 
 	ret := Capitalize("hello world")
@@ -25,6 +27,7 @@ func TestCapitalize(t *testing.T) {
 }
 
 func TestPascalCase(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 
 	ret := PascalCase("hello world")
@@ -35,6 +38,7 @@ func TestPascalCase(t *testing.T) {
 }
 
 func TestCamelCase(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 
 	ret := CamelCase("hello world")
@@ -44,6 +48,7 @@ func TestCamelCase(t *testing.T) {
 }
 
 func TestKebabCase(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 
 	ret := KebabCase("hello world")
@@ -53,11 +58,29 @@ func TestKebabCase(t *testing.T) {
 }
 
 func TestIsAlpha(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 
 	rst := IsAlpha("13131")
 	is.Equal(false, rst)
 
 	rst = IsAlpha("abcdef")
+	is.Equal(true, rst)
+}
+
+func TestIsAlphaNumberic(t *testing.T) {
+	t.Parallel()
+	is := assert.New(t)
+
+	rst := IsAlphaNumeric("abdefg1331$")
+	is.Equal(false, rst)
+
+	rst = IsAlphaNumeric("abdefg1331")
+	is.Equal(true, rst)
+
+	rst = IsAlphaNumeric("abcd")
+	is.Equal(true, rst)
+
+	rst = IsAlphaNumeric("1325")
 	is.Equal(true, rst)
 }

@@ -7,6 +7,7 @@ import (
 )
 
 func TestReduce(t *testing.T) {
+	t.Parallel()
 	nums := []int32{1, 2, 3, 4, 5}
 	total := Reduce(nums, 0, func(prev int32, now int32) int32 {
 		return prev + now
@@ -18,6 +19,7 @@ func TestReduce(t *testing.T) {
 }
 
 func TestMap(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 	nums := []int32{1, 2, 3, 4, 5}
 
@@ -30,6 +32,7 @@ func TestMap(t *testing.T) {
 }
 
 func TestFilter(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 
 	nums := []int32{1, 2, 3, 4, 5}
@@ -42,6 +45,7 @@ func TestFilter(t *testing.T) {
 }
 
 func TestSome(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 	nums := []int32{1, 2, 3, 4}
 
@@ -53,6 +57,7 @@ func TestSome(t *testing.T) {
 }
 
 func TestEvery(t *testing.T) {
+	t.Parallel()
 	is := assert.New(t)
 
 	nums := []int32{1, 2, 3, 4}
@@ -64,6 +69,8 @@ func TestEvery(t *testing.T) {
 }
 
 func TestForEach(t *testing.T) {
+	t.Parallel()
+
 	nums := []int32{1, 2, 3, 4}
 	count := 0
 	total := len(nums)

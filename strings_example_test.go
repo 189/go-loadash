@@ -9,3 +9,17 @@ func ExampleIsAlpha() {
 	// true
 
 }
+
+func ExampleIsAlphaNumeric() {
+	rst := IsAlphaNumeric("abcd13")
+	fmt.Println(rst)
+	// Output:
+	// true
+}
+
+func ExampleIsNumeric() {
+	rst := IsNumeric("1234")
+	fmt.Println(rst)
+	// Output:
+	// true
+}

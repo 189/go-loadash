@@ -117,3 +117,23 @@ func IsAlpha(s string) bool {
 	}
 	return true
 }
+
+// IsNumeric check if the string contains only numbers. Empty string is valid.
+func IsNumeric(s string) bool {
+	for _, v := range s {
+		if '9' < v || v < '0' {
+			return false
+		}
+	}
+	return true
+}
+
+// IsAlphanumeric check if the string contains only letters and numbers. Empty string is valid.
+func IsAlphaNumeric(s string) bool {
+	for _, v := range s {
+		if ('Z' < v || v < 'A') && ('z' < v || v < 'a') && ('9' < v || v < '0') {
+			return false
+		}
+	}
+	return true
+}
