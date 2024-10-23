@@ -110,5 +110,69 @@ func TestFlat(t *testing.T) {
 	expected := []int{
 		1, 2, 3, 1, 4, 5, 6,
 	}
-	is.Equal(rst, expected)
+	is.Equal(expected, rst)
+}
+
+func TestPush(t *testing.T) {
+	t.Parallel()
+
+	is := assert.New(t)
+	items := []int{
+		1, 2, 3,
+	}
+	Push(&items, 4, 5)
+	expected := []int{
+		1, 2, 3, 4, 5,
+	}
+	is.Equal(expected, items)
+}
+
+func TestPop(t *testing.T) {
+	t.Parallel()
+
+	is := assert.New(t)
+	items := []int{
+		1, 2, 3,
+	}
+	f, _ := Pop(&items)
+
+	expected := 3
+	is.Equal(expected, f)
+	is.Equal(items, []int{
+		1, 2,
+	})
+}
+
+func TestShift(t *testing.T) {
+	t.Parallel()
+
+	is := assert.New(t)
+	items := []int{
+		1, 2, 3,
+	}
+	f, _ := Shift(&items)
+
+	expected := 1
+	is.Equal(expected, f)
+	is.Equal(items, []int{
+		2, 3,
+	})
+}
+
+func TestSplice(t *testing.T) {
+	t.Parallel()
+
+	is := assert.New(t)
+	items := []int{
+		1, 2, 7, 8, 5,
+	}
+	if err := Splice(&items, 2, 2, []int{3, 4}...); err != nil {
+		t.Error(err)
+		return
+	}
+
+	expected := []int{
+		1, 2, 3, 4, 5,
+	}
+	is.Equal(expected, items)
 }

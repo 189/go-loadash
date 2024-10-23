@@ -47,3 +47,52 @@ func ExampleFlat() {
 	// Output:
 	// [1 2 3 1 4 5 6]
 }
+
+func ExamplePush() {
+	items := []int{
+		1, 2, 3,
+	}
+	Push(&items, 4, 5)
+
+	fmt.Printf("%v", items)
+	// Output:
+	// [1 2 3 4 5]
+}
+
+func ExamplePop() {
+	items := []int{
+		1, 2, 3,
+	}
+	p, _ := Pop(&items)
+
+	fmt.Printf("%v, %v", p, items)
+	// Output:
+	// 3, [1 2]
+}
+
+func ExampleShift() {
+	items := []int{
+		1, 2, 3,
+	}
+	f, _ := Shift(&items)
+
+	fmt.Printf("%v, %v", f, items)
+	// Output:
+	// 1, [2 3]
+}
+
+func ExampleSplice() {
+
+	items := []int{
+		1, 2, 7, 8, 5,
+	}
+	Splice(&items, 2, 2, []int{3, 4}...)
+
+	expected := []int{
+		1, 2, 3, 4, 5,
+	}
+
+	fmt.Printf("%v", expected)
+	// Output:
+	// [1 2 3 4 5]
+}

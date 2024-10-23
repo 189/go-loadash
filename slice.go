@@ -1,5 +1,7 @@
 package golodash
 
+import "errors"
+
 // Iterate over each item in the slice sequentially, passing the result of the previous iteration to the next iteration's function execution
 func Reduce[T any, U any](items []T, initial U, reducer func(U, T) U) U {
 	accumulated := initial
@@ -73,4 +75,54 @@ func Flat[T ~[]E, E any](items []T) []E {
 	}
 
 	return result
+}
+
+// Append insert new item to the end of the slice
+func Push[T ~[]E, E any](s *T, items ...E) {
+	*s = append(*s, items...)
+}
+
+// Pop removes and returns the last element from a slice
+func Pop[T ~[]E, E any](s *T) (E, error) {
+	total := len(*s)
+	if total == 0 {
+		zero := GetZeroValue[E]()
+		return zero, errors.New("slice is empty")
+	}
+
+	lastItem := (*s)[total-1]
+	*s = (*s)[:total-1]
+
+	return lastItem, nil
+}
+
+// Shift remove and returns the first element from a slice
+func Shift[T ~[]E, E any](s *T) (E, error) {
+	if len(*s) == 0 {
+		zero := GetZeroValue[E]()
+		return zero, nil
+	}
+
+	firstItem := (*s)[0]
+	*s = (*s)[1:]
+
+	return firstItem, nil
+}
+
+// Splice modifies the slice by removing and/or adding elements
+func Splice[T ~[]E, E any](s *T, start int, removes int, items ...E) error {
+	totalLen := len(*s)
+
+	if start > totalLen || start < 0 {
+		return errors.New("start index out of bounds")
+	}
+
+	if removes > totalLen-start {
+		removes = totalLen - start
+	}
+
+	*s = append((*s)[:start], (*s)[start+removes:]...)
+	*s = append((*s)[:start], append(items, (*s)[start:]...)...)
+
+	return nil
 }
