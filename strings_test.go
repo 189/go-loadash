@@ -6,6 +6,16 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+func TestPadLeft(t *testing.T) {
+	t.Parallel()
+	is := assert.New(t)
+
+	ret := PadLeft("x", 3)
+	expect := "00x"
+
+	is.Equal(expect, ret)
+}
+
 func TestSubstring(t *testing.T) {
 	t.Parallel()
 	is := assert.New(t)

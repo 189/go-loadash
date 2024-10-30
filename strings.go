@@ -15,6 +15,14 @@ var (
 	splitNumberLetterReg = regexp.MustCompile(`([0-9])([a-zA-Z])`)
 )
 
+// PadLeft pads the left side of a string with characters until it meets the specified length
+func PadLeft(s string, length int) string {
+	for len(s) < length {
+		s = "0" + s
+	}
+	return s
+}
+
 // Return Part of a string
 func Substring[T ~string](from T, offset int, length uint) T {
 	rs := []rune(from)

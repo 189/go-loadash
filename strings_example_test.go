@@ -23,3 +23,10 @@ func ExampleIsNumeric() {
 	// Output:
 	// true
 }
+
+func ExamplePadLeft() {
+	rst := PadLeft("x", 5)
+	fmt.Println(rst)
+	// Output:
+	// 0000x
+}
