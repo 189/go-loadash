@@ -17,10 +17,10 @@ func FormatDuration(d time.Duration, formatStr string) string {
 		"YYYY": "0000",
 		"MM":   "00",
 		"DD":   "00",
-		"HH":   PadLeft(strconv.Itoa(hours), 2),
-		"mm":   PadLeft(strconv.Itoa(minutes), 2),
-		"ss":   PadLeft(strconv.Itoa(seconds), 2),
-		"SS":   PadLeft(strconv.Itoa(milliseconds), 3),
+		"HH":   PadStart(strconv.Itoa(hours), 2, "0"),
+		"mm":   PadStart(strconv.Itoa(minutes), 2, "0"),
+		"ss":   PadStart(strconv.Itoa(seconds), 2, "0"),
+		"SS":   PadStart(strconv.Itoa(milliseconds), 3, "0"),
 	}
 
 	for key, value := range replacements {

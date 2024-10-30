@@ -10,8 +10,18 @@ func TestPadLeft(t *testing.T) {
 	t.Parallel()
 	is := assert.New(t)
 
-	ret := PadLeft("x", 3)
+	ret := PadStart("x", 3, "0")
 	expect := "00x"
+
+	is.Equal(expect, ret)
+}
+
+func TestPadEnd(t *testing.T) {
+	t.Parallel()
+	is := assert.New(t)
+
+	ret := PadEnd("x", 3, "0")
+	expect := "x00"
 
 	is.Equal(expect, ret)
 }

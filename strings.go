@@ -15,10 +15,18 @@ var (
 	splitNumberLetterReg = regexp.MustCompile(`([0-9])([a-zA-Z])`)
 )
 
-// PadLeft pads the left side of a string with characters until it meets the specified length
-func PadLeft(s string, length int) string {
+// PadStart pads the left side of a string with characters until it meets the specified length
+func PadStart(s string, length int, fillStr string) string {
 	for len(s) < length {
-		s = "0" + s
+		s = fillStr + s
+	}
+	return s
+}
+
+// PadEnd pads the right side of a string with characters until it meets the specified length
+func PadEnd(s string, length int, fillStr string) string {
+	for len(s) < length {
+		s += fillStr
 	}
 	return s
 }
