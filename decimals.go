@@ -50,7 +50,7 @@ func DecimalsSub(input string, rest ...string) (string, error) {
 	})
 }
 
-// DecimalsDiv return the value of multiple parameters multiplied sequentially
+// DecimalsDiv return the value of all parameters divide sequentially
 func DecimalsDiv(input string, rest ...string) (string, error) {
 	return calculate(input, rest, func(curr, next decimal.Decimal) decimal.Decimal {
 		return curr.Div(next)
