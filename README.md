@@ -1,4 +1,4 @@
-# go-lodash
+# golodash
 
 A set of lodash-like utilities in Golang.
 
