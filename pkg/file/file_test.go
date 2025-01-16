@@ -1,7 +1,6 @@
 package file
 
 import (
-	"fmt"
 	"os"
 	"testing"
 )
@@ -44,7 +43,6 @@ func TestReadFile(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got, err := ReadJSONFile[TestStruct](tt.filepath)
-			fmt.Println(tt.filepath, err)
 
 			if (!tt.expectErr && err != nil) || (tt.expectErr && err == nil) {
 				t.Errorf("ReadFile() error = %v, expectErr %v", err, tt.expectErr)

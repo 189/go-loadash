@@ -21,7 +21,7 @@ import (
 //
 //	*E - A pointer to the decoded value of type E.
 //	error - An error if any occurred during the file reading or decoding process.
-func ReadJSONFile[E any](filepath string) (*E, error) {
+func ReadJSONFile[T any](filepath string) (*T, error) {
 	if _, err := os.Stat(filepath); os.IsNotExist(err) {
 		return nil, fmt.Errorf("file does not exist: %w", err)
 	}
@@ -32,10 +32,10 @@ func ReadJSONFile[E any](filepath string) (*E, error) {
 	}
 	defer file.Close()
 
-	var result E
+	var result T
 	decoder := json.NewDecoder(file)
 	if err := decoder.Decode(&result); err != nil {
-		return nil, fmt.Errorf("fail to decode file content %w", err)
+		return nil, fmt.Errorf("fail to decode file content: %w", err)
 	}
 	return &result, nil
 }
