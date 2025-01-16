@@ -12,12 +12,12 @@
       "program": "${workspaceFolder}"
     },
     {
-      "name": "test",
+      "name": "test:file",
       "type": "go",
       "request": "launch",
       "mode": "test",
-      "program": "${workspaceFolder}",
-      "args": ["-test.run", "Pop"]
+      "program": "${workspaceFolder}/pkg/file",
+      "args": ["-test.run", "./..."]
     }
   ]
 }
